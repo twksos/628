@@ -1,0 +1,302 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Author:
+% Guangcheng Wei
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ref
+% MI template http://www.cis.syr.edu/courses/cis428/DMI.pdf
+
+% x mark from https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+
+% homework questions http://www.cis.syr.edu/courses/cis428/hw01.pdf
+% Latex reference https://en.wikibooks.org/wiki/LaTeX
+% slide http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{listings} % Code package
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\problem}[1]{\subsection *{Problem #1}}
+\newcommand{\claim}{\textbf{Claim}: }
+\newcommand{\basis}{\textbf{Basis:}: }
+\newcommand{\inductiveStep}{\textbf{Inductive step:}: }
+\newcommand{\pnl}{$ $\newline\\}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Homework 1: A Math Warm-Up \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Guangcheng Wei (799233472)} % Your name
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+1.  Assignment: Homework 1\\
+
+2a. Name \& email address (First author): Guangcheng Wei<gwei100@syr.edu> \\
+2b. Name \& email address (Second author, if any):\\
+\\
+3a. Did you consult with anyone on parts of this assignment? (Yes/No): No\\
+3b. If so, give the details of these consultations (e.g., who, what,    where)?\\
+\\
+4a. Did you consulted an outside source on parts of this assignment     (e.g., an Internet site)?  (Yes/No): Yes
+4b. If so, give the details of these consultations (e.g., who, what,     where)?
+\\
+Assignment Latex Template(Frits Wenneker) http://www.latextemplates.com/template/short-sectioned-assignment\\
+Latex Reference https://en.wikibooks.org/wiki/LaTeX\\
+xmark \xmark in Latex (Werner) from https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark\\
+\\
+Homework questions(Jim Royer) http://www.cis.syr.edu/courses/cis428/hw01.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf\\
+DMI template(Jim Royer) http://www.cis.syr.edu/courses/cis428/DMI.pdf\\
+\\
+5.  The authors attest that the above is correct, (Yes/No): Yes\\
+
+\pagebreak
+\section {Mathematical Induction Arguments}
+
+\problem 1 Prove by induction on $n$ that, for each $n \geq 1,$
+\[1+3+5+\cdots+(2n-1) = n^2.\]
+
+\begin{proof}
+\pnl
+By mathematical induction\\
+Let P(n) be the statement: $1+3+5+\cdots+(2n-1) = n^2$\\
+\basis P(1) is true, because $1 = 2*1 - 1 = 1^2$\\
+\inductiveStep Suppose $k \geq 1$. For the inductive hypothesis, suppose P(k) is true: \\
+$$1+3+5+\cdots+(2k-1) = k^2$$
+We need to show that P(k+1) is true:
+$$1+3+5+\cdots+(2(k+1)-1) = (k+1)^2$$
+$\because \ (k+1)^2 = k^2 + 2k + 1 \ and \ P(k)$\\\\
+$\therefore \ (k+1)^2 =1+3+5+\cdots+(2k-1)+2k+1$\\\\
+To prove P(k+1), we need to show that:\\\\
+$(2(k+1)-1) = 2k+1$\\\\
+$\because \ (2(k+1)-1) = 2k + 2 - 1 = 2k + 1$\\\\
+$\therefore \ (k+1)^2 =1+3+5+\cdots+2(k-1)+2(k+1)$\\\\
+Thus, for all $k \geq 1$ , the conditional P(k) $\implies$ P(k + 1) is true.\\\\
+By the basis, inductive step, and the principle of mathematical induction, the claim is true.
+\end{proof}
+
+\problem 2 Prove by induction on $n$ that, for each $n \geq 1,$
+\[1\cdot2+2\cdot3+3\cdot4+\cdots+n\cdot(n+1)=\frac{n\cdot(n+1)(n+2)}{3}\]
+
+\begin{proof}
+\pnl
+By mathematical induction\\
+Let P(n) be the statement: $1\cdot2+2\cdot3+3\cdot4+\cdots+n\cdot(n+1)=\frac{n\cdot(n+1)(n+2)}{3}$\\
+\basis P(1) is true, because $1*2 = \frac{1*2*3}{3}$\\
+\inductiveStep Suppose $k \geq 1$. For the inductive hypothesis, suppose P(k) is true: \\
+$$1\cdot2+2\cdot3+3\cdot4+\cdots+k\cdot(k+1)=\frac{k\cdot(k+1)(k+2)}{3}$$
+We need to show that P(k+1) is true:
+$$1\cdot2+2\cdot3+3\cdot4+\cdots+(k+1)\cdot(k+2)=\frac{(k+1)\cdot(k+2)(k+3)}{3}$$
+$\because \ 1\cdot2+2\cdot3+3\cdot4+\cdots+(k+1)\cdot(k+2) \\= 1\cdot2+2\cdot3+3\cdot4+\cdots+k\cdot(k+1)+(k+1)\cdot(k+2) \ and \ P(k)$\\\\
+$\therefore \ 1\cdot2+2\cdot3+3\cdot4+\cdots+(k+1)\cdot(k+2) = \frac{k\cdot(k+1)(k+2)}{3} + (k+1)\cdot(k+2)$\\\\
+To prove P(k+1), we need to show that:\\\\
+$\frac{k\cdot(k+1)(k+2)}{3} + (k+1)\cdot(k+2) = \frac{(k+1)\cdot(k+2)(k+3)}{3}$\\\\
+$\because \ \frac{k\cdot(k+1)(k+2)}{3} + (k+1)\cdot(k+2) = \frac{k\cdot(k+1)(k+2)}{3} + \frac{3\cdot(k+1)\cdot(k+2)}{3} = \frac{(k+3)\cdot(k+1)\cdot(k+2)}{3} \\\\
+=\frac{(k+1)\cdot(k+2)(k+3)}{3}$\\\\
+$\therefore \ 1\cdot2+2\cdot3+3\cdot4+\cdots+(k+1)\cdot(k+2)=\frac{(k+1)\cdot(k+2)(k+3)}{3}$\\\\
+Thus, for all $k \geq 1$ , the conditional P(k) $\implies$ P(k + 1) is true.\\
+By the basis, inductive step, and the principle of mathematical induction, the claim is true.
+\end{proof}
+
+\problem 3
+Prove by induction on $n$ that, for each $n \geq 1, n \leq 2^n.$
+\begin{proof}
+\pnl
+By mathematical induction\\
+Let P(n) be the statement: $n \leq 2^n$\\
+\basis P(1) is true, because $1 < 2^1$\\
+\inductiveStep Suppose $k \geq 1$. For the inductive hypothesis, suppose P(k) is true: \\
+$$k \leq 2^k$$
+We need to show that P(k+1) is true:
+$$k+1 \leq 2^{k+1}$$
+$\because \ k+1 \ and \ P(k)$\\\\
+$\therefore \ k+1 \leq 2^k + 1$
+To prove P(k+1), we need to show that:\\\\
+$2^k + 1 \leq 2^{k+1} \ \ (k \geq 1)$\\\\
+$\because \  2^{k+1} = 2^k \cdot 2 = 2^k + 2^k \ and \ k \geq 1$\\\\
+$\therefore \ 2 \leq 2^k $\\\\
+$\therefore \ 2^k + 2 \leq 2^{k+1} $\\\\
+$\because \ 2^k + 1 < 2^k + 2 \ \ (k \geq 1)$\\\\
+$\therefore \ 2^k + 1 \leq 2^{k+1} \ \ (k \geq 1)$\\\\
+
+Thus, for all $k \geq 1$ , the conditional P(k) $\implies$ P(k + 1) is true.
+By the basis, inductive step, and the principle of mathematical induction, the claim is true.
+\end{proof}
+\section {Divisibility}
+
+The slides presented the following utility lemma about divisibility.
+\newline
+\newline
+\textbf{Lemma}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\begin{enumerate}
+  \item $d|a$ and $d|b \implies d|b$.
+  \item $d|a$ iff $d|(-a)$.
+  \item $d|a$ iff $-d|a$.
+  \item $\pm 1|a$ for any $a \in \Z $.
+  \item $\pm d|0$ for any $d \in \Z^+ $.
+  \item $a \neq 0$ \& $d|a \implies |d| \leq |a|$.
+  \item $a \neq 0$ \& $d|a$ \& $a \neq \pm d \implies |d| < |a|$.
+  \item $d|\pm 1 \implies d = \pm 1$.
+  \item $a|b$ \& $b|a \implies a = \pm b$.
+  \item $d|a$ \& $d|b \implies (\forall x,y)[d|(ax+by)]$.
+\end{enumerate}
+
+\problem 4
+Prove part (d) of the lemma. You may use parts (a), (b), and (c).
+\begin{proof}
+\pnl
+$\because \ a = a \cdot 1$ and $a \in \Z.$\\\\
+$\therefore \ 1|a$  by definition.\\\\
+$\therefore \ -1|a$  by Lemma (c)\\\\
+$\therefore \ \pm 1|a$\\\\
+\end{proof}
+
+\problem 5
+Prove part (h) of the lemma. You may use parts (a) through (g).
+\begin{proof}
+\pnl
+$\because \ d|\pm 1$ and $1 \neq 0$\\\\
+$\therefore \ |d| \leq |1|$ by Lemma (f).\\\\
+$\because \ \pm 1 | d$ by Lemma (d).\\\\
+$\therefore \ |1|\leq|d|$ by Lemma (f).\\\\
+$\because \ |1|\leq|d|$ and $|d| \leq |1|$\\\\
+$\therefore \ |d|=|1|$\\\\
+$\therefore \ d=\pm 1$\\\\
+
+\end{proof}
+
+\problem 6
+Prove part (j) of the lemma. You may use parts (a) through (i).
+\begin{proof}
+\pnl
+$\because \ d|a \& d|b$\\\\
+$\therefore \ a = p \cdot d$ and $b = q \cdot d, (p, q \in \Z)$\\\\
+$\because  (\forall x, y) ax+by = pxd+qyd = (px+qy) d $ and $(px+qy) \in \Z$\\\\
+$\therefore (\forall x, y) [d|(ax+by)]$ by defination\\\\
+\end{proof}
+
+\section {Divisibility}
+\problem 7
+Suppose that $a|n$, $b|n$, and $gcd(a, b) = 1$ where $a, b,$ and $n \in \Z^+$.
+Prove that $(a \cdot b)|n$.
+\begin{proof}
+\pnl
+To prove $(a \cdot b)|n$, by defination, we need to show that:\\
+$$(\exists k \in \Z) n = (a \cdot b) k$$
+$\because a, b \in \Z^+$\\\\
+$\therefore(\exists k \in \Z) n = (a \cdot b) k \equiv \ (\exists k \in \Z) k = \frac{n}{(a \cdot b)} $\\\\
+$\because \ gcd(a, b) = 1$\\\\
+$\therefore \ \exists (x,y \in \Z) a\cdot x+b\cdot y = 1 $\\\\
+$\therefore \ \exists (x,y \in \Z) k = \frac{n \cdot 1}{(a \cdot b)} = \frac{n(ax+by)}{(a \cdot b)} $\\\\
+$\because \ a|n, b|n$\\\\
+$\therefore \ n = p\cdot a, n = q\cdot b \ (p,q \in \Z)$\\\\
+$\therefore \ k = \frac{n(ax+by)}{(a \cdot b)} = \frac{nax+nby)}{(a \cdot b)} = \frac{nax}{(a \cdot b)} + \frac{nby}{(a \cdot b)} = \frac{nx}{b} + \frac{ny}{a} = qx + py$\\\\
+$\therefore \ k = qx+py$\\\\
+$\because x,y \in \Z$ and $p,q \in \Z$\\\\
+$\therefore \ k \in \Z$\\\\
+$\therefore \ (\exists k \in \Z) k = \frac{n}{(a \cdot b)}$\\\\
+$\therefore \ (\exists k \in \Z) n = (a \cdot b) k$\\\\
+$\therefore \ (a \cdot b)|n$ by defination.\\\\
+
+\end{proof}
+
+\section {Modular Arithmetic}
+\problem 8
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\begin{enumerate}
+  \item Write a little program to print out the multiplication table of the numbers {1,...,14} mod 15.
+  \item Based on this table, make a table of the numbers 1, . . . , 14 and, for each number, either give its multiplicative inverse (mod 15), if it has one, or else write \xmark \ if it fails to have an inverse.
+\end{enumerate}
+(a) The program written in javascript shown below.
+\lstinputlisting[language]{mulmod15.js}
+
+(a) The table printed is:
+\begin{lstlisting}
+    1   2   3   4   5   6   7   8   9   10  11  12  13  14
+1   1   2   3   4   5   6   7   8   9   10  11  12  13  14
+2   2   4   6   8   10  12  14  1   3   5   7   9   11  13
+3   3   6   9   12  0   3   6   9   12  0   3   6   9   12
+4   4   8   12  1   5   9   13  2   6   10  14  3   7   11
+5   5   10  0   5   10  0   5   10  0   5   10  0   5   10
+6   6   12  3   9   0   6   12  3   9   0   6   12  3   9
+7   7   14  6   13  5   12  4   11  3   10  2   9   1   8
+8   8   1   9   2   10  3   11  4   12  5   13  6   14  7
+9   9   3   12  6   0   9   3   12  6   0   9   3   12  6
+10  10  5   0   10  5   0   10  5   0   10  5   0   10  5
+11  11  7   3   14  10  6   2   13  9   5   1   12  8   4
+12  12  9   6   3   0   12  9   6   3   0   12  9   6   3
+13  13  11  9   7   5   3   1   14  12  10  8   6   4   2
+14  14  13  12  11  10  9   8   7   6   5   4   3   2   1
+\end{lstlisting}
+
+(b) Based on the table above, the $(i \cdot j) \cong 1 (mod\ 15)$ pairs are:\\
+$1 \cdot 1,\ 2 \cdot 8,\ 4 \cdot 4,\ 7 \cdot 13,\ 8 \cdot 2,\ 11 \cdot 11,\ 13 \cdot 7,\ 14 \cdot 14$
+Then the multiplicative inverse (mod 15) of 1,$\dots$,14 are:
+
+\begin{lstlisting}
+Number   1   2   3   4   5   6   7   8   9   10  11  12  13  14
+Inverse  1   8   X   4   X   X  13   2   X    X  11   X   7  14
+\end{lstlisting}
+%----------------------------------------------------------------------------------------
+
+\end{document}

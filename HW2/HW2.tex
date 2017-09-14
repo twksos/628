@@ -1,0 +1,402 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Author:
+% Guangcheng Wei
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ref
+% MI template http://www.cis.syr.edu/courses/cis428/DMI.pdf
+
+% x mark from https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+
+% homework questions http://www.cis.syr.edu/courses/cis428/hw01.pdf
+% Latex reference https://en.wikibooks.org/wiki/LaTeX
+% slide http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{listings} % Code package
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\problem}[1]{\subsection *{Problem #1}}
+\newcommand{\claim}{\textbf{Claim}: }
+\newcommand{\basis}{\textbf{Basis:}: }
+\newcommand{\inductiveStep}{\textbf{Inductive step:}: }
+\newcommand{\pnl}{$ $\newline\\}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Homework 1: A Math Warm-Up \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Guangcheng Wei (799233472)} % Your name
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+1.  Assignment: Homework 1\\
+
+2a. Name \& email address (First author): Guangcheng Wei<gwei100@syr.edu> \\
+2b. Name \& email address (Second author, if any):\\
+\\
+3a. Did you consult with anyone on parts of this assignment? (Yes/No): No\\
+3b. If so, give the details of these consultations (e.g., who, what,    where)?\\
+\\
+4a. Did you consulted an outside source on parts of this assignment     (e.g., an Internet site)?  (Yes/No): Yes
+4b. If so, give the details of these consultations (e.g., who, what,     where)?
+\\
+Assignment Latex Template(Frits Wenneker) http://www.latextemplates.com/template/short-sectioned-assignment\\
+Latex Reference https://en.wikibooks.org/wiki/LaTeX\\
+\\
+Homework 1(Guangcheng Wei)\\
+\\
+Homework questions(Jim Royer) http://www.cis.syr.edu/courses/cis428/hw02.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/02poly.pdf\\
+Char frequency http://www.data-compression.com/english.html\\
+\\
+5.  The authors attest that the above is correct, (Yes/No): Yes\\
+
+\pagebreak
+\problem 1 The following is the ciphertext of a message encrypted with a shift
+cipher.
+\begin{lstlisting}
+XLCJS LOLWT EEWPV PJDSP VPAET ETYPD NCZHL YOPGP
+CJEST YRESL EXLCJ DLTOE SPQPO DHPCP DFCPE ZVYZH
+\end{lstlisting}
+Your job: (a) Find the key and decrypt the message, and (b) describe
+the steps you went through in finding the key.\\\\
+
+(a) The key is 11 and the decrypted message is: \\
+\begin{lstlisting}
+MARYH ADALI TTLEK EYSHE KEPTI TINES CROWA NDEVE
+RYTHI NGTHA TMARY SAIDT HEFED SWERE SURET OKNOW
+\end{lstlisting}
+The message should be:\\
+MARY HAD A LITTLE KEY. SHE KEPT IT IN ESCROW AND EVERYTHING THAT MARY SAID THE FEDS WERE SURE TO KNOW.\\
+\\
+(b) The step I used are:\\
+1. implement encrypt and decrypt of shift cipher\\
+\begin{lstlisting}
+    //encrypt: mod(p + shift, 26) = c = mod(c, 26)
+    //decrypt: mod(c - shift, 26) = p = mod(p, 26)
+\end{lstlisting}
+2. Write the logic of solve shift cipher:\\
+\begin{lstlisting}
+    //solve:   mod(shift, 26) = mod(c - p, 26)
+\end{lstlisting}
+Then the solve process is easy when given plaintext and ciphertext.\\
+\begin{lstlisting}
+function solveShift(cstr, p, c) {
+    //encrypt: mod(p + shift, 26) = c = mod(c, 26)
+    //decrypt: mod(c - shift, 26) = p = mod(p, 26)
+    
+    //solve:   mod(shift, 26) = mod(c - p, 26)
+    const shift = mod(c.charCodeAt(0) - p.charCodeAt(0), 26);
+    const pstr = decShift(cstr, shift);
+    return {key: shift, plainText: pstr};
+}
+\end{lstlisting}
+
+3. Frequency analysis of cipher text.\\
+\begin{lstlisting}
+    const problem1cipherText = 'XLCJS LOLWT EEWPV PJDSP VPAET ETYPD NCZHL ' +
+        'YOPGP CJEST YRESL EXLCJ DLTOE SPQPO DHPCP DFCPE ZVYZH';
+    const problem1FreqCount = freqCount(problem1cipherText);
+    console.log(problem1FreqCount);
+
+Result:     
+[ { key: 'F', count: 1 },
+
+  ...
+
+  { key: 'C', count: 6 },
+  { key: 'L', count: 7 },
+  { key: 'E', count: 9 },
+  { key: 'P', count: 12 } ]
+\end{lstlisting}
+4. Try let the highest frequency char P in cipher text to be from E, to see if the decoded output is meaningful.\\
+\begin{lstlisting}
+const problem1Result = solveShift(problem1cipherText, 'E', 'P');
+console.log(problem1Result);
+\end{lstlisting}
+5. The out put is meaningful, accept the key = 11 and test encrypt plain text with 11. The result of encrypt is same as the cipher text.\\
+6. Split the words in plain text use knowledge in english.\\
+
+
+\problem 2 The following is the ciphertext of a message encrypted with an affine
+cipher.
+\begin{lstlisting}
+FPFKR NEHAF LJHZH KRPHY EVURH HDVSF MHAFL JYRVY MR
+\end{lstlisting}
+Your job: (a) Find the key and decrypt the message, and (b) describe
+the steps you went through in finding the key.\\\\
+(a) The key is $a=3, b=5$ in $c=a*p+b$. and the decrypted message is:
+\begin{lstlisting}
+AMATE URSHA CKSYS TEMSP ROFES SIONA LSHAC KPEOP LE
+\end{lstlisting}
+The message should be:\\
+AMATEUR SHACK SYSTEMS PROFESSIONAL SHACK PEOPLE\\
+\\
+(b) The step I used are:
+1. implement encrypt and decrypt of affine cipher\\
+\begin{lstlisting}
+    //encrypt: mod(a * p + b, 26) = c = mod(c, 26)
+    //decrypt: mod((c - shift) * INV[a], 26) = p = mod(p, 26)
+\end{lstlisting}
+2. Clearify the logic of solve affine cipher:\\
+As the choice of $a$ is limited to $a \in \{ x| mod(x * y) = 1, y \in \Z \ and \ 0 \leq y \leq 25\}$\\
+When we have 2 pair of plain text to cipher text $c_0 = enc_{affine}(p_0), c_1 = enc_{affine}(p_1)$, we can have:
+$$ c_0 = c_0\ mod\ 26 = (ap_0+b)\ mod\ 26$$ 
+$$ c_1 = c_1\ mod\ 26 = (ap_1+b)\ mod\ 26$$
+by subtract one from another, we can elimiate variable $b$:\\
+$$(c_0 - c_1)\ mod\ 26 = (a(p_0-p_1))\ mod\ 26$$
+$$(c_0 - c_1)\ mod\ 26 = (a(p_0-p_1))\ mod\ 26$$
+Because choice of a is limited, we can try those choices and get $a$s or discard this pair when no $a$ matches.\\
+Then for each $a$, we can calculate $b$ from both $b_0= (c_0 - a*p_0)\ mod \ 26$ and $b_1= (c_1 - a*p_1)\ mod \ 26$\\
+If $b_0 = b_1$ we accept it as $b$. Otherwise, discard this $a$.\\\\
+After go through the process above, we will have a set of variables. Then we try each of those possible variables and see if the outcome is meaningful.\\
+
+3. Frequency analysis of cipher text.\\
+\begin{lstlisting}
+[ { key: 'S', count: 1 },
+
+  ...
+
+  { key: 'V', count: 3 },
+  { key: 'Y', count: 3 },
+  { key: 'R', count: 5 },
+  { key: 'F', count: 5 },
+  { key: 'H', count: 7 } ]
+\end{lstlisting}
+4. Try let the highest frequency char pair H, F in cipher text to be from ['E', 'T', 'A', 'O', 'N', 'I', 'S']. Run the solve function for each permutation and collect the result.\\
+\begin{lstlisting}
+    const highFreq = ['E', 'T', 'A', 'O', 'N', 'I', 'S'];
+    let results = [];
+    for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 6; j++) {
+            if (j == i) continue;
+            const firstP = highFreq[i];
+            const secondP = highFreq[j];
+            const firstC = 'H';
+            const secondC = 'F';
+            const problem2Result = solveAffine(
+                problem2cipherText,
+                [firstP, secondP],
+                [firstC, secondC]
+            );
+            if (problem2Result) results = results.concat(problem2Result);
+        }
+    }
+    console.log(results);
+\end{lstlisting}
+5. There is no really meaningful result in the output. One interesting output is:\\
+\begin{lstlisting}
+[
+  ...
+
+  { pv: [ 'O', 'I' ],
+    cv: [ 'H', 'F' ],
+    variable: { a: '9', b: 11 },
+    plainText: 'IMIXSGFOTIAUOQOXSMONFEBSOOCEVIDOTIAUNSENDS' },
+  
+  ...
+]
+\end{lstlisting}
+It contains 'I mix', 'Mon', 'Feb', 'I do', 'Ends'. However, it is not meaningful.\\
+
+6. Try let second highest frequency char pair F, R in cipher text to be from ['E', 'T', 'A', 'O', 'N', 'I', 'S'].\\
+\begin{lstlisting}
+    ...
+            const firstC = 'R';
+            const secondC = 'F';
+    ...
+\end{lstlisting}
+7. The first output is meaningful.\\
+\begin{lstlisting}
+[ { pv: [ 'E', 'A' ],
+    cv: [ 'R', 'F' ],
+    variable: { a: '3', b: 5 },
+    plainText: 'AMATEURSHACKSYSTEMSPROFESSIONALSHACKPEOPLE' },
+
+    ...
+]
+\end{lstlisting}
+9. Accept the key = { a: 3, b: 5 } and test encrypt plain text with $a=3, b=5$. The result of encrypt is same as the cipher text.\\
+10. Split the words in plain text use knowledge in english.\\
+
+
+
+\problem 3 Suppose we have a password policy that passwords must:
+\begin{enumerate}
+\item consist of upper and lower case letters and digits; and
+\item be between 6 and 8 characters long.
+\end{enumerate}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\begin{enumerate}
+\item How many passwords are there under these rules?
+\item How many passwords are there if we add the rule that no letter may be used twice.
+\end{enumerate}
+(a)
+$N_{password} = N_{password\ length\ 6} + N_{password\ length\ 7} + N_{password\ length\ 8}$\\
+$= (26 + 26 + 10)^{6} +(26 + 26 + 10)^{7}+(26 + 26 + 10)^{8}$\\
+$= (26 + 26 + 10)^{6} +(26 + 26 + 10)^{7}+(26 + 26 + 10)^{8}$\\
+$= 62^6 + 62^7 + 62^8$\\
+$= 221918520426688$\\
+
+(b)
+$N_{password} = N_{password\ length\ 6} + N_{password\ length\ 7} + N_{password\ length\ 8}$\\
+$= P(62, 6) + P(62, 7) + P(62, 8)$\\
+$= 62 * 61 * 60 * 59 * 58 * 57 +  62 * 61 * 60 * 59 * 58 * 57 * 56 +  62 * 61 * 60 * 59 * 58 * 57 * 56 * 55$\\
+$= 138848807594160$\\
+
+\problem 4 A pre-season poll will rank the top 25 teams from the 830 soccer
+teams in the country. How many different rankings are possible?\\\\
+$Ranking Counts = P(830, 25)$\\
+$= \frac{830!}{(830-25)!}$\\
+$= 830 * 829 * \cdots * 806$\\
+$= 6.5828003 * 10^{72}$\\
+
+\problem 5 We have a box containing: 4 green balls, 6 blue balls, 3 yellow balls,
+and 7 red balls. A ball is selected at random from the box. Compute
+the probability that the selected ball is:\\\\
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\begin{enumerate}
+\item blue
+\item yellow
+\item not red
+\item yellow or blue
+\item not green and not red
+\item either green, blue, or yellow
+\end{enumerate}
+
+$P(blue) = \frac{6}{20} = 0.3$\\
+$P(green) = \frac{4}{20} = 0.2$\\
+$P(yellow) = \frac{3}{20} = 0.15$\\
+$P(red) = \frac{7}{20} = 0.35$\\
+
+\begin{enumerate}
+\item $P(blue) = 0.3$
+\item $P(yellow) = 0.2$
+\item $P(not\ red) = 1 - P(red) = 1 - 0.35 = 0.65$
+\item $P(yellow\ or\ blue) = P(yellow) + P(blue) = 0.15 + 0.3 = 0.45$
+\item $P(not\ green\ and\ not\ red) = 1 - P(green) - P(red) = 1 - 0.2 - 0.35 = 0.45$
+\item $P(either\ green,\ blue,\ or\ yellow) = P(green) + P(blue) + P(yellow) = 0.2 + 0.3 + 0.15 = 0.65$
+\end{enumerate}
+
+\problem 6 In a survey of 1000 people, categorized as smokers ($S$) or nonsmokers
+($\neg S$) and as with respiratory problems ($R$) or without respiratory problems
+($\neg R$). The results are given in Table 1.
+Based on these results, determine whether the follow pairs of events are independent:
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{c | c c}
+    & $R$ & $\neg R$ \\ \hline
+    $S$ & 520 & 180 \\
+    $\neg S$ & 77 & 223 \\
+  \end{tabular}
+  \caption{Survey Results}
+
+\end{table}
+
+\begin{enumerate}
+\item $S$ and $\neg S$
+\item $R$ and $\neg R$
+\item $S$ and $R$
+\item $S$ and $\neg R$
+\item $\neg S$ and $R$
+\item $\neg S$ and $\neg R$
+\end{enumerate}
+
+
+$P(S \bigcap R) = \frac{520}{1000} = 0.52$\\\\
+$P(S \bigcap \neg R) = \frac{180}{1000} = 0.18$\\\\
+$P(\neg S \bigcap R) = \frac{77}{1000} = 0.077$\\\\
+$P(\neg S \bigcap \neg R) = \frac{223}{1000} = 0.223$\\\\
+$P(S) = \frac{520 + 180}{1000} = 0.7$\\\\
+$P(\neg S) = \frac{77 + 223}{1000} = 0.3$\\\\
+$P(R) = \frac{520 + 77}{1000} = 0.597$\\\\
+$P(\neg R) = \frac{180 + 223}{1000} = 0.403$\\\\
+
+\begin{enumerate}
+\item $S$ and $\neg S$ are not independent.\\
+$P(S \bigcap \neg S) = 0\\ P(S) \cdot P(\neg S) = 0.7 \cdot 0.3= 0.21$\\
+$P(S \bigcap \neg S) \neq P(S) \cdot P(\neg S)$\\
+
+\item $R$ and $\neg R$ are not independent.\\
+$P(R \bigcap \neg R) = 0\\ P(R) \cdot P(\neg R) = 0.597 \cdot 0.403 = 0.240591$\\
+$P(R \bigcap \neg R) \neq P(R) \cdot P(\neg R)$\\
+\item $S$ and $R$ are not independent.\\
+$P(S \bigcap R) = 0.52\\ P(S) \cdot P(R) = 0.7 \cdot 0.597 = 0.4179$\\
+$P(S \bigcap R) \neq P(S) \cdot P(R)$\\
+\item $S$ and $\neg R$ are not independent.\\
+$P(S \bigcap \neg R) = 0.18\\ P(S) \cdot P(\neg R) = 0.7 \cdot 0.403 = 0.2821$\\
+$P(S \bigcap \neg R) \neq P(S) \cdot P(\neg R)$\\
+\item $\neg S$ and $R$ are not independent.\\
+$P(\neg S \bigcap R) = 0.077\\ P(\neg S) \cdot P(R) = 0.3 \cdot 0.597 = 0.1791$\\
+$P(\neg S \bigcap R) \neq P(\neg S) \cdot P(R)$\\
+\item $\neg S$ and $\neg R$ are not independent.\\
+$P(\neg S \bigcap \neg R) = 0.223\\ P(\neg S) \cdot P(\neg R) = 0.3 \cdot 0.403= 0.1209$\\
+$P(\neg S \bigcap \neg R) \neq P(\neg S) \cdot P(\neg R)$\\
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
