@@ -1,0 +1,15 @@
+{
+  "name": "enigma",
+  "version": "0.0.1",
+  "description": "Enigma Machine Simulator",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node --experimental-modules index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guangcheng Wei <twksos@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "keypress": "^0.2.1"
+  }
+}
