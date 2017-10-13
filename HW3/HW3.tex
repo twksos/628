@@ -1,0 +1,253 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Author:
+% Guangcheng Wei
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ref
+% MI template http://www.cis.syr.edu/courses/cis428/DMI.pdf
+
+% x mark from https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+
+% homework questions http://www.cis.syr.edu/courses/cis428/hw01.pdf
+% Latex reference https://en.wikibooks.org/wiki/LaTeX
+% slide http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{listings} % Code package
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\problem}[1]{\subsection *{Problem #1}}
+\newcommand{\claim}{\textbf{Claim}: }
+\newcommand{\basis}{\textbf{Basis:}: }
+\newcommand{\inductiveStep}{\textbf{Inductive step:}: }
+\newcommand{\pnl}{$ $\newline\\}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Homework 3: $\varphi$ and Friends \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Guangcheng Wei (799233472)} % Your name
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+1.  Assignment: Homework 3\\
+
+2a. Name \& email address (First author): Guangcheng Wei<gwei100@syr.edu> \\
+2b. Name \& email address (Second author, if any):\\
+\\
+3a. Did you consult with anyone on parts of this assignment? (Yes/No): No\\
+3b. If so, give the details of these consultations (e.g., who, what,    where)?\\
+\\
+4a. Did you consulted an outside source on parts of this assignment     (e.g., an Internet site)?  (Yes/No): Yes\\
+4b. If so, give the details of these consultations (e.g., who, what,     where)?
+\\
+Assignment Latex Template(Frits Wenneker) http://www.latextemplates.com/template/short-sectioned-assignment\\
+Latex Reference https://en.wikibooks.org/wiki/LaTeX\\
+\\
+Factor Calculator https://www.mathsisfun.com/numbers/factors-all-tool.html\#calc\\
+\\
+Tex file form Homework 1(Guangcheng Wei)\\
+Tex file form Homework 2(Guangcheng Wei)\\
+\\
+Homework questions(Jim Royer) http://www.cis.syr.edu/courses/cis428/hw03.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/05rsa.pdf\\
+\\
+5.  The authors attest that the above is correct, (Yes/No): Yes\\
+
+\pagebreak
+\problem 1 
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\begin{enumerate}
+\item Suppose $p$ is a prime and $a, b \in \Z$ are such that $ab \cong 0\ (mod\ p)$ .\\
+Show that $a \cong 0 (mod\ p)$ or $b \cong 0\ (mod\ p)$.\\
+\begin{proof}
+\pnl
+$\because ab \cong 0\ (mod\ p)$\\
+$\therefore p | (a\cdot b)$\\
+$\therefore p | a$ or $p | b$\\
+$\therefore a \cong 0 (mod\ p)$ or $b \cong 0\ (mod\ p)$\\\\
+\end{proof}
+
+
+\item Suppose $p$ is an odd prime. Show that the only two solutions of
+$$x^2 \cong 1 (mod\ p)$$
+are $$x \cong \pm 1 (mod\ p)$$
+\begin{proof}
+\pnl
+$\because x^2 \cong 1 (mod\ p)$\\
+$\therefore x^2-1 \cong 0 (mod\ p)$\\
+$\therefore (x+1)(x-1) \cong 0 (mod\ p)$\\
+By the proof in (a):\\
+$(x+1) \cong 0 (mod\ p)$ or $(x-1) \cong 0\ (mod\ p)$\\
+$\therefore x \cong 1 (mod\ p)$ or $x \cong -1 (mod\ p)$\\
+$\therefore x \cong \pm 1 (mod\ p)$\\
+
+\end{proof}
+\end{enumerate}
+
+\problem 2 Compute
+\begin{enumerate}
+\item $\varphi(41) = ?$\\
+$\because$ 41 is a prime.\\
+$\therefore \varphi(41) = 41 -1 = 40$\\
+\item $\varphi(319) = ?$\\
+$\because 319 = 11 * 29$, 11 and 29 are primes.\\
+$\therefore \varphi(319) = (11-1) * (29-1) = 280$\\
+\item $\varphi(360) = ?$\\
+$\because 360 = 5 * 3^2 * 2^3$\\
+$\therefore \varphi(360) = (5 - 1) * (9 - 3) * (8 - 4) = 96 $\\
+\item $\varphi(1176) = ?$\\
+$\because 1176 = 7^2 * 3 * 2^3$\\
+$\therefore \varphi(1176) = (49 - 7) * (3 - 1) * (8 - 4) = 336 $\\
+\end{enumerate}
+
+\problem 3 Suppose $m > 0$ is odd. Prove that $\varphi(2m) = \varphi(m)$.
+\begin{proof}
+\pnl
+Suppose m have prime factorization: $m = p_{1}^{k_1} \cdot p_{2}^{k_2} \cdot \ldots \cdot p_{n}^{k_n}$ where $p_{1} < p_{2} < \ldots < p_{n}$\\
+$\because$ m is odd.\\
+$\therefore \forall p \in \{p_{1}, p_{2}, \ldots, p_{n}\}$, $p \neq 2$\\
+$\because$ Lemma 8.\\
+$\therefore \varphi(m) = ( p_{1}^{k_1} -  p_{1}^{k_1 - 1}) \cdot ( p_{2}^{k_2} -  p_{2}^{k_2 - 1}) \cdot \ldots \cdot ( p_{n}^{k_n} -  p_{n}^{k_n - 1})$\\
+and $\varphi(2m) = (2-1) \cdot ( p_{1}^{k_1} -  p_{1}^{k_1 - 1}) \cdot ( p_{2}^{k_2} -  p_{2}^{k_2 - 1}) \cdot \ldots \cdot ( p_{n}^{k_n} -  p_{n}^{k_n - 1})$\\
+$\therefore \varphi(2m) =  (2 - 1) \cdot \varphi(m) = \varphi(m)$\\
+\end{proof}
+
+\problem 4 Suppose $m > 0$ is odd and
+$$\Z^{*}_{m}=_{def} \left\{ a \in \{ 0, \dots , m - 1 \} : gcd(a, m) = 1 \right\}$$
+\begin{enumerate}
+\item Prove that if $a \in \Z^{*}_{m}$, then $((-a)\ mod\ m) \in \Z^{*}_{m}$.
+\begin{proof}
+\pnl
+$\because a \in \Z^{*}_{m}$\\
+$\therefore a < m$\\
+$\therefore -a mod\ m = m-a$\\
+To prove $((-a)\ mod\ m) \in \Z^{*}_{m}$, we need to show:\\
+$gcd(m-a, m) = 1$ and $m-a \in \{ 1,\ldots,m-1 \}$\\
+Which is $\exists x,y \in \Z \ (m-a)x+my = 1$ and $1 < m - a < m$ \\
+$\because a < m$ and $a > 0$\\
+$\therefore 0 < m - a < m $\\
+$\therefore m-a \in \{ 1,\ldots,m-1 \}$\\
+$\because gcd(a, m) = 1$\\
+$\therefore \exists p,q \in \Z \ ap+mq = 1$\\
+$\because (m-a)x+my = 1 \iff -xa + (x+y)m = 1$\\
+$\therefore$ exist $x=-p$. $y = q -x = q+p$ for $(m-a)x+my = 1$\\
+$\therefore \exists x,y \in \Z \ (m-a)x+my = 1$\\
+$\therefore gcd(m-a, m) = 1$\\
+$\therefore$ if $a \in \Z^{*}_{m}$, then $((-a)\ mod\ m) \in \Z^{*}_{m}$\\
+
+\end{proof}
+\item Suppose ${ a_1 <\cdots< a_{\varphi(m)} } = \Z^{*}_{m}$.\\
+Prove that $(a_1 +\cdots+ a_{\varphi(m)}) \cong 0\ (mod\ m)$.
+\begin{proof}
+\pnl
+CASE(I): $m = 1$ \\
+$\therefore \Z^{*}_{m} = \phi$\\
+$\therefore (a_1 +\cdots+ a_{\varphi(m)}) = 0$\\
+$\therefore (a_1 +\cdots+ a_{\varphi(m)}) \cong 0\ (mod\ m)$\\
+
+CASE(II): $m \neq 1$\\
+$\because m$ is odd and $m > 0$\\
+$\therefore m > 2$\\
+$\therefore \varphi (m) is even$\\
+Suppose $\varphi (m) = 2k$, $k \in \Z+$\\
+$(a_1 +\cdots+ a_{\varphi(m)}) = (a_1 +\cdots+ a_{\varphi(2k)})$\\
+$\because$ above proof in (a).\\
+$\therefore a_1 + a_\varphi(2k) = a_2 + a_\varphi(2k-1) = \ldots = m$\\
+$\therefore (a_1 +\cdots+ a_{\varphi(m)}) = km$\\
+$\therefore (a_1 +\cdots+ a_{\varphi(m)}) \cong 0\ (mod\ m)$\\
+
+For all cases, $(a_1 +\cdots+ a_{\varphi(m)}) \cong 0\ (mod\ m)$.\\
+Therefore, $(a_1 +\cdots+ a_{\varphi(m)}) \cong 0\ (mod\ m)$.\\
+\end{proof}
+\end{enumerate}
+
+\problem 5 
+\begin{enumerate}
+\item Suppose $p$ is a prime. Show that, for all $a \in Z, a^p \cong a\ (mod\ p)$.
+\begin{proof}
+\pnl
+CASE(I): $p | a$, $a \in Z$\\
+$\because\ p | a$\\
+$\therefore\ a\ mod\ p = 0$ and $a^p\ mod\ p = 0$\\
+$\therefore\ a^p \cong a\ (mod\ p)$\\
+CASE(II): $p \nmid a$, $a \in Z$\\
+With Fermat's Little Lemma:\\
+$a^{p - 1} \equiv 1\ (mod\ p)$\\
+Multiply $a$ on both side:\\
+$\therefore\ a^p \equiv a\ (mod\ p)$\\
+$\therefore\ a^p \cong a\ (mod\ p)$\\\\
+
+For all cases, $a^p \cong a\ (mod\ p)$\\
+Therefore, $\forall a \in Z, a^p \cong a\ (mod\ p)$
+
+\end{proof}
+\item Compute $2^{16049282}\ mod\ 131$\\
+$\because 2^{130}\ mod\ 131 \equiv 1\ mod \ 131$\\
+$2^{16049282}\ mod\ 131 = 2^{16049282\ mod\ 130}\ mod\ 131$\\
+$= 2^2\ mod\ 131$\\
+$= 4$\\
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

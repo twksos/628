@@ -1,0 +1,49 @@
+\documentclass[11pt,twoside,a4paper]{article}
+\usepackage{url}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\begin{document}
+\title{A Technical Description and a Simplified Simulation of an Enigma Machine.}
+\author{Guangcheng Wei}
+\date{\normalsize\today}
+\maketitle
+
+\section{Introduction}
+Information is an important issue in wars. To protect information, cryptograph is needed.
+During the World War II, a new cryptograph algorithm has been invited to prevent known attacks on existing cryptograph back then. Frequency analysis was popular at that time. And Enigma Machine is proved resist frequency analysis.\cite{wiki:Enigma}
+\section{Technical Description}
+The Enigma Machine contains mainly 5 components:
+Roters: 3 or more routers, each contains 26 positions.
+Reflector: change singnal in pairs, make it able to use same process to encode and decode.
+Plugboard: configurable plugboard
+Keyboard: 26 key keyboard, stroke to input message.
+Lamp panel: 26 lamps to display encoded/decoded message.
+
+Encode process:
+1. Inital Routers with ground setting.
+2. Encode key with ground setting twice and retain key ciphertext.
+3. Inital Routers with key.
+4. Encode message to message ciphertext.
+5. send key ciphertext and message ciphertext.
+
+Decode process:
+1. Inital Routers with ground setting.
+2. Decode key ciphertext with ground setting twice and verify.
+3. Inital Routers with key.
+4. Decode message ciphertext to message.
+
+\section{Simulation Design}
+The simulation could be design in many ways. However, a pure software design would reflect the logic within. The simulation program would takes parameters mentioned before to initialize and encrypt plain text to cipher text.
+Roters: $f(x) = x + r_i \mod 26$, for roter $i$ after $i$ times of use, $r_i$ will increase by 1.
+Reflector: $f(x) = 26 - x$.
+Plugboard: $f(x) = P[x]$.
+Keyboard: input.
+Lamp panel: output.
+
+\section{Implementation}
+\section{Result and Interpretation}
+\section{Futher Thought}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{MID} 
+\end{document}

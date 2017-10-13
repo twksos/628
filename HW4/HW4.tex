@@ -1,0 +1,212 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Author:
+% Guangcheng Wei
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ref
+% MI template http://www.cis.syr.edu/courses/cis428/DMI.pdf
+
+% x mark from https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+
+% homework questions http://www.cis.syr.edu/courses/cis428/hw01.pdf
+% Latex reference https://en.wikibooks.org/wiki/LaTeX
+% slide http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{listings} % Code package
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\problem}[1]{\subsection *{Problem #1}}
+\newcommand{\claim}{\textbf{Claim}: }
+\newcommand{\basis}{\textbf{Basis:}: }
+\newcommand{\inductiveStep}{\textbf{Inductive step:}: }
+\newcommand{\pnl}{$ $\newline\\}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Homework 4: Playing with RSA \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Guangcheng Wei (799233472)} % Your name
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+1.  Assignment: Homework 4\\
+
+2a. Name \& email address (First author): Guangcheng Wei<gwei100@syr.edu> \\
+2b. Name \& email address (Second author, if any):\\
+\\
+3a. Did you consult with anyone on parts of this assignment? (Yes/No): No\\
+3b. If so, give the details of these consultations (e.g., who, what,    where)?\\
+\\
+4a. Did you consulted an outside source on parts of this assignment     (e.g., an Internet site)?  (Yes/No): Yes\\
+4b. If so, give the details of these consultations (e.g., who, what,     where)?
+\\
+Assignment Latex Template(Frits Wenneker) http://www.latextemplates.com/template/short-sectioned-assignment\\
+Latex Reference https://en.wikibooks.org/wiki/LaTeX\\
+\\
+Online Modular Multiplicative Inverse Tool: http://www.dcode.fr/modular-inverse\\
+Big Integer Modular Arithmetic Calculator: http://ptrow.com/perl/calculator\_bigint.pl\\
+\\
+Tex file form Homework 1(Guangcheng Wei)\\
+Tex file form Homework 2(Guangcheng Wei)\\
+Tex file form Homework 3(Guangcheng Wei)\\
+\\
+Homework questions(Jim Royer) http://www.cis.syr.edu/courses/cis428/hw04.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/05rsa.pdf\\
+\\
+5.  The authors attest that the above is correct, (Yes/No): Yes\\
+
+\pagebreak
+\problem 1
+Given RSA parameters $n = 101 \cdot 113$ and $e = 4761$ and a ciphertext
+$c = 11204$, find the plaintext that produced $c$. \\
+
+plaintext message $m = c^d \mod n$\\
+$n = 11413$, $\varphi (n) = 11200$
+$d = e^{-1} \mod \varphi (n)$\\
+$d = 4761^{-1} \mod 11200$\\
+$\because 4761^{-1} \mod 11200 = 6441$\\
+$\therefore d=6441$\\
+$m=c^d \mod n = 11204^6441 \mod 11413 = 2017$
+
+\problem 2
+Suppose Alice's RSA modulus is $n_A$ and Bob's RSA modulus is $n_B$
+where $n_A \neq n_B$. You discover that $gcd(n_A, n_B) \neq 1$. Show how to
+break both Alice's and Bob's systems.\\
+
+\begin{enumerate}
+\item find $p_A = p_B = gcd(n_A, n_B)$
+\item $q_A = \frac{n_A}{p_A}$\\
+$q_B = \frac{n_B}{p_B}$
+\item $\varphi(n_A) = (p_A-1)(q_A-1)$\\
+$\varphi(n_B) = (p_B-1)(q_B-1)$
+\item $d_A = e_A^{-1} \mod \varphi(n_A)$ by xgcd\\ 
+$d_B = e_B^{-1}\mod \varphi(n_B)$  by xgcd
+\item The ciphertext $c_A$ from A can be decrypt by $m = (c_A)^{d_A} \mod n$\\
+The ciphertext $c_B$ from B can be decrypt by $m=(c_B)^{d_B} \mod n$
+\end{enumerate}
+
+\problem 3
+Suppose $p$ is prime and $a \in \Z_p$. Show that if $a^i\mod p = 1$, then
+$$a^n\mod p = (a^{n \mod i})\mod p.$$\\
+
+\begin{proof}
+\pnl
+Let $r = a^n \mod p$\\
+$\because a^i\mod p = 1$\\
+and $a^n\mod p = r$\\
+$\therefore \forall j \in \Z,\ a^n\mod p \cdot (a^i\mod p)^j = r$\\
+$\therefore \forall j \in \Z,\ (a^{n+j\cdot i})\mod p = r$\\
+$\because (n \mod i) \in \{k | k = n+j\cdot i,\ j \in \Z\}$\\
+$\therefore (a^{n\mod i})\mod p = r$\\
+$\therefore  a^n \mod p = (a^{n\mod i})\mod p$\\
+\end{proof}
+
+\problem 4 
+Suppose Alice and Bob have the same RSA modulus $n$. Alice's public encryption is $e_A$ and Bob's is $e_B$ where $gcd(e_A,e_B) = 1$. Carlos sends the same message $m$ to Alice and Bob. Show how Eves can
+construct $m$ using only public information.\\
+
+Eves can have public information:
+$c_A, c_B, e_A, e_B, n$\\
+Where\\
+$c_A = m^{e_A}\mod n$\\
+$c_B = m^{e_B}\mod n$\\
+$\because gcd(e_A,e_B) = 1$\\
+$\therefore \exists x,y$ that $x\cdot e_A + y\cdot e_B = 1$ and $x, y$ can be obtained by xgcd.\\
+$\because c_A = m^{e_A}\mod n$\\
+and $c_B = m^{e_B}\mod n$\\
+$\therefore (c_A)^x \mod n = m^{x\cdot e_A}\mod n$\\
+and $(c_B)^y \mod n = m^{y\cdot e_B}\mod n$\\
+$\therefore (c_A)^x\cdot (c_B)^y \mod n = m^{x\cdot e_A + y\cdot e_B} \mod n$\\
+$\because x\cdot e_A + y\cdot e_B = 1$\\
+$\therefore (c_A)^x\cdot (c_B)^y \mod n = m^{x\cdot e_A + y\cdot e_B} \mod n = m (\mod n) = m$\\
+$\therefore (c_A)^x\cdot (c_B)^y \mod n = m$\\
+$\therefore$ Eves can construct $m$ from $(c_A)^x\cdot (c_B)^y \mod n$.
+\problem 5 
+Suppose Alice's RSA with encryption function is $E_A(m) = m^e\mod n$.\\
+Show that for all $m_1, m_2 \in \Z_n$:\\
+
+$$E_A(m_1\cdot m_2) = (E_A(m_1) \cdot E_A(m_2))\mod n$$
+\begin{proof}
+\pnl
+$\because E_A(m) = m^e\mod n$\\
+$\therefore E_A(m_1\cdot m_2) = (m_1\cdot m_2)^e \mod n = (m_1^e\cdot m_2^e) \mod n $\\
+and $(E_A(m_1) \cdot E_A(m_2))\mod n = ((m_1^e (\mod n)) \cdot (m_1^e (\mod n))) \mod n$\\
+$\because (a\cdot b) (\mod n) = ((a (\mod n))(b (\mod n))) (\mod n)$\\
+$\therefore (m_1^e\cdot m_2^e) \mod n  = ((m_1^e (\mod n)) \cdot (m_1^e (\mod n))) \mod n$\\
+$\therefore E_A(m_1\cdot m_2) = (E_A(m_1) \cdot E_A(m_2))\mod n$
+\end{proof}
+
+\problem 6
+To increase security, Bob proposes to pick two public RSA encryption keys $e^B_1$ and $e^B_2$ and asks Alice to each message sent to him be encrypted by $E_{B'}(m) = (m^{e^B_1})^{e^B_2}\mod n$. Alice explains to Bob that he hasn't increased security at all. Explain Alice's mathematical reasons.\\
+Alice would need to claim:\\\\
+\claim If Oscar can break $E(m) = m^e \mod n$ by factoring $n = p \cdot q$, Oscar can also break $E_{B'}(m)$.
+\begin{proof}
+\pnl
+$\because e^B_1$ and $e^B_2$ are public and $n = p \cdot q$.\\
+$\therefore d^B_1 = ((e^B_1)^{-1} (mod (p - 1)(q - 1))$\\
+and $d^B_2 = ((e^B_2)^{-1} (mod (p - 1)(q - 1))$\\
+$\therefore$ Oscar can have private key for double encription $d^B_1$ and $d^B_2$ if Oscar can break single time encryption.
+\end{proof}
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,261 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Author:
+% Guangcheng Wei
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ref
+% MI template http://www.cis.syr.edu/courses/cis428/DMI.pdf
+
+% x mark from https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+
+% homework questions http://www.cis.syr.edu/courses/cis428/hw01.pdf
+% Latex reference https://en.wikibooks.org/wiki/LaTeX
+% slide http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{listings} % Code package
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\problem}[1]{\subsection *{Problem #1}}
+\newcommand{\claim}{\textbf{Claim}: }
+\newcommand{\basis}{\textbf{Basis:}: }
+\newcommand{\inductiveStep}{\textbf{Inductive step:}: }
+\newcommand{\pnl}{$ $\newline\\}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Homework 5: Discrete Logs \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Guangcheng Wei (799233472)} % Your name
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+1.  Assignment: Homework 5\\
+
+2a. Name \& email address (First author): Guangcheng Wei<gwei100@syr.edu> \\
+2b. Name \& email address (Second author, if any):\\
+\\
+3a. Did you consult with anyone on parts of this assignment? (Yes/No): No\\
+3b. If so, give the details of these consultations (e.g., who, what,    where)?\\
+\\
+4a. Did you consulted an outside source on parts of this assignment     (e.g., an Internet site)?  (Yes/No): Yes\\
+4b. If so, give the details of these consultations (e.g., who, what,     where)?
+\\
+Assignment Latex Template(Frits Wenneker) http://www.latextemplates.com/template/short-sectioned-assignment\\
+Latex Reference https://en.wikibooks.org/wiki/LaTeX\\
+\\
+multiplication table mod 13: \\http://www.wolframalpha.com/input/?i=multiplication+table+modulo+[//number:13//]\\
+Euler's totient function: https://en.wikipedia.org/wiki/Euler\%27s\_totient\_function\\
+\\
+Tex file form Homework 4(Guangcheng Wei)\\
+\\
+Homework questions(Jim Royer) http://www.cis.syr.edu/courses/cis428/hw05.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/05rsa.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/06pkc.pdf\\
+\\
+5.  The authors attest that the above is correct, (Yes/No): Yes\\
+
+\pagebreak
+\problem 1
+Show that 6 is a primitive element of $\Z_{13}^*$\\
+$\because \Z_{13}^*=\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$\\
+$\therefore 6 \in \Z_{13}^*$\\
+$\because$
+$6^1 \mod 13= 6$, \\
+$6^2 \mod 13= 6 * 6 \mod 13 = 10$, \\
+$6^3 \mod 13= 10 * 6 \mod 13 = 8$, \\
+$6^4 \mod 13= 8 * 6 \mod 13 = 9$, \\
+$6^5 \mod 13= 9 * 6 \mod 13 = 2$, \\
+$6^6 \mod 13= 2 * 6 \mod 13 = 12$, \\
+$6^7 \mod 13= 12 * 6 \mod 13 = 7$, \\
+$6^8 \mod 13= 7 * 6 \mod 13 = 3$, \\
+$6^9 \mod 13= 3 * 6 \mod 13 = 5$, \\
+$6^{10} \mod 13= 5 * 6 \mod 13 = 4$, \\
+$6^{11} \mod 13= 4 * 6 \mod 13 = 11$, \\
+$6^{12} \mod 13= 11 * 6 \mod 13 = 1$\\
+$\because 6^{13-1} \mod 13 = 1$\\
+$\therefore$ 6 is a primitive element of $\Z_{13}^*$\\
+
+\problem 2
+Use the work of the previous problem to construct a table.\\
+\begin{tabular}{ c || c | c | c | c | c | c | c | c | c | c | c | c }
+  n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+  \hline
+  $dlog_6(n)$ & 12 & 5 & 8 & 10 & 9 & 1 & 7 & 3 & 4 & 2 & 11 & 6 \\
+\end{tabular}
+
+\problem 3
+Suppose $p$ is prime and $g$ is a primitive element of $\Z_p^*$. Show that
+
+\begin{enumerate}
+\item $g^i \cong g^j (\mod p) \implies i \cong j (\mod p - 1)$
+\begin{proof}
+\pnl
+$\because g^i \cong g^j (\mod p)$\\
+$\therefore g^{i-j} \cong 1 (\mod p)$\\
+$\because$ $g$ is a primitive element of $\Z_p^*$\\
+$\therefore \varphi(n) = $min $\{k \in \Z^+ :g^k \cong 1 (\mod p)\}$\\
+$\therefore i-j = m\cdot \varphi(n)$, $m \in \Z^+$\\
+$\because$ $p$ is prime\\
+$\therefore i-j = m\cdot (p-1)$, $m \in \Z^+$\\
+$\therefore i-j \cong 0 \mod (p-1)$\\
+$\therefore i \cong j \mod (p-1)$\\
+\end{proof}
+\item $dlog_g(a\cdot b) \cong dlog_g(a)+dlog_g(b) (\mod p-1)$
+
+\begin{proof}
+\pnl
+Let $k = dlog_g(a\cdot b)$, $k_a = dlog_g(a)$, $k_b = dlog_g(b)$.\\
+$\because g^k \cong a\cdot b (\mod p)$\\
+$g^{k_a} \cong a (\mod p)$\\
+$g^{k_b} \cong b (\mod p)$\\
+$\therefore g^k \cong g^{k_a} \cdot g^{k_b} (\mod p)$\\
+$\because g^i \cong g^j (\mod p) \implies i \cong j (\mod p - 1)$\\
+$\therefore k \cong (k_a + k_b) (\mod p-1)$\\
+$\therefore dlog_g(a\cdot b) \cong dlog_g(a)+dlog_g(b) (\mod p-1)$
+
+\end{proof}
+\item $dlog_ga^n \cong n\cdot dlog_ga(\mod p-1)$
+
+\begin{proof}
+\pnl
+$\because dlog_g(a\cdot b) \cong dlog_g(a)+dlog_g(b) (\mod p-1)$\\
+$\therefore dlog_ga^n = dlog_g(a\cdot a^{n-1})$\\
+$\therefore dlog_ga^n \cong dlog_g(a)+dlog_g(a^{n-1}) (\mod p-1)$\\
+$\cong 2 \cdot dlog_g(a)+dlog_g(a^{n-2}) (\mod p-1)$\\
+$\cong 3 \cdot dlog_g(a)+dlog_g(a^{n-3}) (\mod p-1)$\\
+$\cong \cdots \cong (n-1) \cdot dlog_g(a) + dlog_g(a^{n-(n-1)})$\\
+$\cong n \cdot dlog_g(a)$\\
+$\therefore dlog_ga^n \cong n\cdot dlog_ga(\mod p-1)$
+\end{proof}
+\end{enumerate}
+
+\problem 4 
+Let $p$ is an odd prime and let $g$ be a primitive element of $\Z_p^*$. Show\\
+$$dlog_g(-1) = dlog_g(p-1) = (p-1) / 2$$
+\begin{proof}
+\pnl
+$\because dlog_g(-1) =$ min $\{k > 0: g^k \cong -1 (\mod p)\}$ \\
+and $dlog_g(p-1) =$ min $\{k > 0: g^k \cong p-1 (\mod p)\}$\\
+and $-1 \mod p = p-1$\\
+$\therefore dlog_g(-1) =$ min $\{k > 0: g^k \cong p-1 (\mod p)\} = dlog_g(p-1)$\\
+$\because dlog_ga^n \cong n\cdot dlog_ga(\mod p-1)$\\
+$\therefore dlog_g(-1^2) \cong 2\cdot dlog_g(-1) \mod (p - 1)$\\
+$\therefore dlog_g(1) \cong 2\cdot dlog_g(-1) \mod (p - 1)$\\
+$\therefore dlog_g(-1) \cong dlog_g(1)/2 \mod (p - 1)$\\
+$\because $ $p$ is an prime.\\
+$\therefore \varphi(p) = p-1$.\\
+$\because $ $g$ is a primitive element of $\Z_p^*$.\\
+$\therefore dlog_g(1) = \varphi(p) = p-1$.\\
+$\because p$ is odd.\\
+$\therefore p-1$ is even.\\
+$\therefore dlog_g(-1) \cong (p-1)/2 \mod (p-1)$.\\
+$\because (p-1)/2 < p-1$\\
+$\therefore dlog_g(-1) = (p-1)/2$.\\
+$\therefore dlog_g(-1) = dlog_g(p-1) = (p-1)/2$.\\
+\end{proof}
+\problem 5 
+Suppose $n$ is odd and $2^{(n-1)/2} \cong k (\mod n)$  where $k \not\cong \pm1 (\mod n)$
+
+\begin{enumerate}
+\item Suppose $k^2 \not\cong 1 (\mod n)$. Show that $n$ cannot be prime.
+\begin{proof}
+\pnl
+Suppose $n$ is prime for contradiction.
+$\because n$ is prime.\\
+$\therefore \varphi(n) = n-1$\\
+$\because 2^{(n-1)/2} \cong k (\mod n)$\\
+$\therefore dlog_2k \cong (n-1)/2 (\mod n-1)$\\
+$\because dlog_ga^n \cong n\cdot dlog_ga(\mod n-1)$\\
+$\therefore dlog_2k^2 \cong (n-1) (\mod n-1)$\\
+$\therefore dlog_2k^2 \cong 0 (\mod n-1)$\\
+$\therefore 2^0 \cong k^2 \mod n$\\
+$\therefore k^2 \cong 1 \mod n$\\
+$\because k^2 \not\cong 1 (\mod n)$\\
+$\therefore$ contradiction.\\
+$\therefore$ $n$ is not prime.
+
+\end{proof}
+\item Suppose $k^2 \cong 1 (\mod n)$. Show how to use this to factor $n$.\\
+Suppose $n = f_1^{p_1} \cdot f_2^{p_2} \cdot \cdots \cdot f_m^{p_m}$, and $f_i$ are prime\\
+$\because$ n is odd\\
+$\therefore$ $f_i$ are odd\\
+$\because 2^{(n-1)/2} \cong k (\mod n)$\\
+$\therefore 2^{(n-1)} \cong k^2 (\mod n)$\\
+$\because k^2 \cong 1 (\mod n)$\\
+$\therefore 2^{n-1} \cong 1 (\mod n)$\\
+$\therefore n-1 \cong dlog_21 (\mod \varphi(n))$\\
+$\because$ Fermat's theorem and n is odd.\\
+$\therefore 2^{\varphi(n)} \cong 1 (\mod n)$\\
+$\therefore \varphi(n) \cong dlog_21 (\mod \varphi(n))$\\
+$\therefore 0 \cong dlog_21 (\mod \varphi(n))$\\
+$\therefore n-1 \cong 0 (\mod \varphi(n))$\\
+$\therefore n \cong 1 (\mod \varphi(n))$\\
+Then I woud try the $\varphi(n)$.\\
+Without knowing the number of factors of n, I would guess from 2 prime factor.\\
+If there are only 2 prime factor, I can have $\varphi(n) = (f_1 - 1) \cdot (f_2 - 1)$\\
+and $n = f_1 \cdot f_2$\\
+Then $f_1$ and $f_2$ can be found.\\
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
