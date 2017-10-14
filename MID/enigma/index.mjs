@@ -1,6 +1,6 @@
 import keypress from 'keypress';
 import fs from 'fs';
-import {Rotor, Reflector} from './router';
+import {Rotor, Reflector} from './rotor';
 
 
 class Enigma {
@@ -12,7 +12,12 @@ class Enigma {
     }
 
     printRouters() {
-        console.log('Router Setting is: ', this.rotors[2].position, this.rotors[1].position, this.rotors[0].position);
+        console.log(
+            'Router Setting is: ',
+            this.rotors[2].position,
+            this.rotors[1].position,
+            this.rotors[0].position
+        );
         this.mode = 0;
     }
 
@@ -55,7 +60,8 @@ class Enigma {
             return rotor.transform(result);
         }, keyAfterPlugboardIn);
         const keyReflected = this.reflector.transform(keyAfterRoutersIn);
-        const keyAfterRoutersOut = [this.rotors[2], this.rotors[1], this.rotors[0]].reduce((result, rotor) => {
+        const reversedRotors =  [this.rotors[2], this.rotors[1], this.rotors[0]];
+        const keyAfterRoutersOut = reversedRotors.reduce((result, rotor) => {
             return rotor.reverse(result);
         }, keyReflected);
         const result = this.plugboard[keyAfterRoutersOut] || keyAfterRoutersOut;

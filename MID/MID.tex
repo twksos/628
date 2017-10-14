@@ -1,6 +1,10 @@
-\documentclass[11pt,twoside,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{url}
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage{listings}
+
 \begin{document}
 \title{A Technical Description and a Simplified Simulation of an Enigma Machine.}
 \author{Guangcheng Wei}
@@ -11,37 +15,137 @@
 Information is an important issue in wars. To protect information, cryptograph is needed.
 During the World War II, a new cryptograph algorithm has been invited to prevent known attacks on existing cryptograph back then. Frequency analysis was popular at that time. And Enigma Machine is proved resist frequency analysis.\cite{wiki:Enigma}
 \section{Technical Description}
-The Enigma Machine contains mainly 5 components:
-Roters: 3 or more routers, each contains 26 positions.
-Reflector: change singnal in pairs, make it able to use same process to encode and decode.
-Plugboard: configurable plugboard
-Keyboard: 26 key keyboard, stroke to input message.
-Lamp panel: 26 lamps to display encoded/decoded message.
+The Enigma Machine contains mainly 5 components:\\\\
+Rotors: 3 or more rotors, each contains 26 positions.\\
+Reflector: change singnal in pairs, make it able to use same process to encode and decode.\\
+Plugboard: configurable plugboard, translate code before and after it enter rotor\\
+Keyboard: 26 key keyboard, stroke to input message.\\
+Lamp panel: 26 lamps to display encoded/decoded message.\\\\
+The encode process engaged after a key stoked on keyboard.
+The signal will go through the route:\\
+Keyboard $\implies$ Plugboard $\implies$ rotor 1 $\implies$ rotor 2 $\implies$ rotor 3 $\implies$\\
+reflector $\implies$ rotor 3 $\implies$ rotor 2 $\implies$ rotor 1 $\implies$ Plugboard $\implies$ Lamp panel\\\\
+After signal go throughed a rotor, the rotor may step ahead to next position. The rotor 1 will step ahead each time key pressed. Other rotors will step ahead with more key pressed.
 
-Encode process:
-1. Inital Routers with ground setting.
-2. Encode key with ground setting twice and retain key ciphertext.
-3. Inital Routers with key.
-4. Encode message to message ciphertext.
-5. send key ciphertext and message ciphertext.
+\subsection{Encode process}
+\begin{enumerate}
+\item Inital Routers with ground setting.
+\item Inital Pluginboard.
+\item Encode key with ground setting twice and retain key ciphertext.
+\item Inital Routers with key.
+\item Encode message to message ciphertext.
+\item send key ciphertext and message ciphertext.
+\end{enumerate}
 
-Decode process:
-1. Inital Routers with ground setting.
-2. Decode key ciphertext with ground setting twice and verify.
-3. Inital Routers with key.
-4. Decode message ciphertext to message.
+\subsection{Decode process}
+\begin{enumerate}
+\item Inital Routers with ground setting.
+\item Inital Pluginboard.
+\item Decode key ciphertext with ground setting twice and verify.
+\item Inital Routers with key.
+\item Decode message ciphertext to message.
+\end{enumerate}
 
 \section{Simulation Design}
-The simulation could be design in many ways. However, a pure software design would reflect the logic within. The simulation program would takes parameters mentioned before to initialize and encrypt plain text to cipher text.
-Roters: $f(x) = x + r_i \mod 26$, for roter $i$ after $i$ times of use, $r_i$ will increase by 1.
-Reflector: $f(x) = 26 - x$.
-Plugboard: $f(x) = P[x]$.
-Keyboard: input.
-Lamp panel: output.
+The simulation could be design in many ways. However, a pure software design would reflect the logic within. The simulation program would takes parameters mentioned before to initialize and encrypt plain text to cipher text.\\
+Roters: \\
+$f(x) = x + r_i \mod 26$ before reflector\\
+$g(x) = x - r_i \mod 26$ after reflector\\
+for rotor $i$ after $i$ times of use, $r_i$ will increase by 1.\\\\
+Reflector: \\
+$r(x) = 25 - x$ when $A = 0$.\\\\
+Plugboard: \\
+a hash table $P$ that turns $p(x) = P[x]$.\\\\
+Keyboard: input will be read directly from keyboard.\\
+Lamp panel: output will be shown on the screen.\\
+
+There are 2 mode of the program: config mode and process mode.
+In the config mode, user is able to change the rotor setting and plugboard setting.
+In the process mode, every keystoke will be encrypt with current setting and the output will be printed.
+
+The plaintext will go through plugboard $p(x)$ first, and the result will be translated by the rotors' $f_3(f_2(f_1(p(x))))$. Then the translated text will get into reflector and output will be $reflected = r(f_3(f_2(f_1(p(x)))))$, and go back to rotors through $g_3(g_2(g_1(reflected)))$. And the result will went through plugboard and finally $p(g_3(g_2(g_1(r(f_3(f_2(f_1(p(x)))))))))$ will be shown on the screen.
+
 
 \section{Implementation}
+The implementation is in nodejs with 2 mjs files and a configuration file for plugboard.
+The entry file is index.mjs. Which implemented class Enigma and the console interactive control.
+The roter.mjs contains implementation of Router and Reflector.\\\\
+Router has methods transform and reverse implemented $f(x)$ and $g(x)$ in design. The rotor will decide whether to step ahead after processed the reflected text in the reverse.
+\begin{lstlisting}
+export class Rotor {
+    ...
+    transform(input) {
+        const inputCode = input.toUpperCase().charCodeAt(0) - A_CODE;
+        const outputPrepare = inputCode + this._position
+        const outputCode = outputPrepare % CHAR_COUNT + A_CODE;
+        const resultChar = String.fromCharCode(outputCode);
+        return resultChar;
+    }
+
+    reverse(input) {
+        const inputCode = input.toUpperCase().charCodeAt(0) - A_CODE;
+        const outputPrepare = inputCode + CHAR_COUNT - this._position;
+        const outputCode = outputPrepare % CHAR_COUNT + A_CODE;
+        this.advancementCounter += 1;
+        if (this.advancementCounter == this.advancement) {
+            this.advancementCounter = 0;
+            this._position += 1;
+        }
+        const resultChar = String.fromCharCode(outputCode);
+        return resultChar;
+    }
+}
+\end{lstlisting}
+Reflector only has a transform method implements $r(x)$ in design.
+\begin{lstlisting}
+export class Reflector {
+    transform(x) {
+        const inputCode = x.toUpperCase().charCodeAt(0) - A_CODE;
+        const outputCode = (25 - inputCode) % 26 + A_CODE;
+        const outputChar = String.fromCharCode(outputCode);
+        return outputChar;
+    }
+}
+\end{lstlisting}
+
+And the encode part of the Enigma class is method process. From the code we can see that, the encryption process start from turn input into uppercase and find corresponding value in plugboard. If no plugboard configed for this input, the original input will be used.\\
+Then the rotors will be used to transform the text before and after reflector involved.
+Atlast the output will check if it is in the plugboard config again to decide whether to use the translated text or original text.
+\begin{lstlisting}
+process(input) {
+    const key = input.toUpperCase();
+    const keyAfterPlugboardIn = this.plugboard[key] || key;
+    const keyAfterRoutersIn = this.rotors.reduce((result, rotor) => {
+        return rotor.transform(result);
+    }, keyAfterPlugboardIn);
+    const keyReflected = this.reflector.transform(keyAfterRoutersIn);
+    const reversedRotors =  [this.rotors[2], this.rotors[1], this.rotors[0]];
+    const keyAfterRoutersOut = reversedRotors.reduce((result, rotor) => {
+        return rotor.reverse(result);
+    }, keyReflected);
+    const result = this.plugboard[keyAfterRoutersOut] || keyAfterRoutersOut;
+    console.log(result);
+    return result;
+}
+\end{lstlisting}
 \section{Result and Interpretation}
-\section{Futher Thought}
+\subsection{Encryption}
+\begin{enumerate}
+\item Set ground setting to: GND
+\item Load plugboard from file.
+\item Encrypt key ASDASD to SNXIBN
+\item Set key to: ASD
+\item Encrypt message: HELLOXWORLD to CDSOHWRXQSV
+\end{enumerate}
+
+\subsection{Decryption}
+\begin{enumerate}
+\item Set ground setting to: GND
+\item Load plugboard from file.
+\item Decrypt key SNXIBN to ASDASD
+\item Set key to : ASD
+\item Decrypt message: CDSOHWRXQSV to HELLOXWORLD
+\end{enumerate}
 
 \nocite{*}
 \bibliographystyle{plain}
