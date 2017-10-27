@@ -14,7 +14,8 @@
 \section{Introduction}
 Information is an important issue in wars. To protect information, cryptograph is needed.
 During the World War II, a new cryptograph algorithm has been invited to prevent known attacks on existing cryptograph back then. Frequency analysis was popular at that time. And Enigma Machine is proved resist frequency analysis.\cite{wiki:Enigma}
-\section{Technical Description}
+
+\section{Technical Description and Simulation Design}
 The Enigma Machine contains mainly 5 components:\\\\
 Rotors: 3 or more rotors, each contains 26 positions.\\
 Reflector: change singnal in pairs, make it able to use same process to encode and decode.\\
@@ -46,7 +47,7 @@ After signal go throughed a rotor, the rotor may step ahead to next position. Th
 \item Decode message ciphertext to message.
 \end{enumerate}
 
-\section{Simulation Design}
+\subsection{Simulation Design}
 The simulation could be design in many ways. However, a pure software design would reflect the logic within. The simulation program would takes parameters mentioned before to initialize and encrypt plain text to cipher text.\\
 Roters: \\
 $f(x) = x + r_i \mod 26$ before reflector\\
@@ -55,15 +56,19 @@ for rotor $i$ after $i$ times of use, $r_i$ will increase by 1.\\\\
 Reflector: \\
 $r(x) = 25 - x$ when $A = 0$.\\\\
 Plugboard: \\
-a hash table $P$ that turns $p(x) = P[x]$.\\\\
+a hash table $P$ loaded from config file that maps given chars:\\
+$p(x) = P[x]$.\\\\
 Keyboard: input will be read directly from keyboard.\\
-Lamp panel: output will be shown on the screen.\\
+Lamp panel: output will be shown on the screen to simulate lamp.\\
 
 There are 2 mode of the program: config mode and process mode.
 In the config mode, user is able to change the rotor setting and plugboard setting.
-In the process mode, every keystoke will be encrypt with current setting and the output will be printed.
-
-The plaintext will go through plugboard $p(x)$ first, and the result will be translated by the rotors' $f_3(f_2(f_1(p(x))))$. Then the translated text will get into reflector and output will be $reflected = r(f_3(f_2(f_1(p(x)))))$, and go back to rotors through $g_3(g_2(g_1(reflected)))$. And the result will went through plugboard and finally $p(g_3(g_2(g_1(r(f_3(f_2(f_1(p(x)))))))))$ will be shown on the screen.
+In the process mode, every keystoke will be encrypt with current setting and the output will be printed.\\
+The plaintext will go through plugboard: $p(x)$.\\
+Then the result will be translated by the rotors: $f_3(f_2(f_1(p(x))))$.\\
+Then the translated text will get into reflector and output will be $r(f_3(f_2(f_1(p(x)))))$.\\
+And go back to rotors through $g_3(g_2(g_1(r(f_3(f_2(f_1(p(x))))))))$.\\
+And the result will went through plugboard and shown on the screen as $$p(g_3(g_2(g_1(r(f_3(f_2(f_1(p(x)))))))))$$.\\
 
 
 \section{Implementation}
@@ -128,6 +133,8 @@ process(input) {
     return result;
 }
 \end{lstlisting}
+
+The full code can be accessed through github\cite{midpaper:code}
 \section{Result and Interpretation}
 \subsection{Encryption}
 \begin{enumerate}
@@ -146,6 +153,10 @@ process(input) {
 \item Set key to : ASD
 \item Decrypt message: CDSOHWRXQSV to HELLOXWORLD
 \end{enumerate}
+
+From the result, the simulator of Enigma works well on encrypt and decrypt.
+\section{Futhur Thought}
+Compare with online Enigma Machine Simulators. I found that they have different configuration in reflector. Also, the wikipedia mentioned that in later version of Enigma, the reflector is configurable like plugboard. In my study, the original default reflector configuration is not clear. However, a configurable reflector would be easy to implement.
 
 \nocite{*}
 \bibliographystyle{plain}
