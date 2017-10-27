@@ -1,0 +1,251 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Author:
+% Guangcheng Wei
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ref
+% MI template http://www.cis.syr.edu/courses/cis428/DMI.pdf
+
+% x mark from https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+
+% homework questions http://www.cis.syr.edu/courses/cis428/hw01.pdf
+% Latex reference https://en.wikibooks.org/wiki/LaTeX
+% slide http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{listings} % Code package
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\problem}[1]{\subsection *{Problem #1}}
+\newcommand{\claim}{\textbf{Claim}: }
+\newcommand{\basis}{\textbf{Basis:}: }
+\newcommand{\inductiveStep}{\textbf{Inductive step:}: }
+\newcommand{\pnl}{$ $\newline\\}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Homework 6\\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Guangcheng Wei (799233472)} % Your name
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+1.  Assignment: Homework 6\\
+
+2a. Name \& email address (First author): Guangcheng Wei<gwei100@syr.edu> \\
+2b. Name \& email address (Second author, if any):\\
+\\
+3a. Did you consult with anyone on parts of this assignment? (Yes/No): No\\
+3b. If so, give the details of these consultations (e.g., who, what,    where)?\\
+\\
+4a. Did you consulted an outside source on parts of this assignment     (e.g., an Internet site)?  (Yes/No): Yes\\
+4b. If so, give the details of these consultations (e.g., who, what,     where)?
+\\
+Assignment Latex Template(Frits Wenneker) http://www.latextemplates.com/template/short-sectioned-assignment\\
+Latex Reference https://en.wikibooks.org/wiki/LaTeX\\
+\\
+Mod Cancellation Law: http://f2.org/maths/nthproof.html
+multiplication table: http://www.wolframalpha.com/widgets/view.jsp?id=dbd4dcfb0bf316a796a5512f7aeeccf5\\
+Modular Arithmetic Calculator: http://ptrow.com/perl/calculator.pl\\
+\\
+Tex file form Homework 5(Guangcheng Wei)\\
+\\
+Homework questions(Jim Royer) http://www.cis.syr.edu/courses/cis428/hw06.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/01mono.pdf\\
+Slide(Jim Royer) http://www.cis.syr.edu/courses/cis428/slides/09secprot.pdf\\
+\\
+5.  The authors attest that the above is correct, (Yes/No): Yes\\
+
+\pagebreak
+\problem 1
+Bob's ElGamal key is $(p, \alpha, a, \beta) = (17, 3, 6, 15)$. Alice sends Bob $(r, t) = (7, 6)$. Determine the plaintext $m$.\\
+$\because m = (t\cdot r^{-a}) \mod p$\\
+$\therefore m = (6 \cdot 7^{-6}) (\mod 17) = 6 (\mod 17) \cdot 7^{-6} (\mod 17)$\\
+$= 6 (\mod 17) \cdot (7^{-1})^{6} (\mod 17) = 6 (\mod 17) \cdot 5^{6} (\mod 17)$\\
+$= 6 (\mod 17) \cdot 2 (\mod 17) = 12 (\mod 17)$\\
+$= 12$\\
+
+\problem 2
+Suppose we have a network of three users, Alice, Bob, and Carlos. The TA picks $p = 31$ and:
+Use the work of the previous problem to construct a table.\\
+\begin{tabular}{ c c c c c c}
+  $a=8$ & $b=3$ & $c=1$ & $r_A=11$ & $r_B=3$ & $r_C=2$\\
+\end{tabular}
+
+Compute the session keys: $K_{AB}$, $K_{AC}$, and $K_{BC}$.
+Using Blom Distribution Scheme:\\
+$a_A = a+b\cdot r_A \mod p= 8+3\cdot 11 \mod 31 = 10 $\\
+$b_A = b+c\cdot r_A \mod p= 3+1\cdot 11 \mod 31 = 14 $\\
+$a_B = a+b\cdot r_B \mod p= 8+3\cdot 3 \mod 31 = 17 $\\
+$b_B = b+c\cdot r_B \mod p= 3+1\cdot 3 \mod 31 = 6 $\\
+$a_C = a+b\cdot r_C \mod p= 8+3\cdot 2 \mod 31 = 14 $\\
+$b_C = b+c\cdot r_C \mod p= 3+1\cdot 2 \mod 31 = 5 $\\
+$K_{AB}=(a_A+b_A\cdot r_B) \mod p=10 + 14 \cdot 3 \mod 31= 21$\\
+$K_{AC}=(a_A+b_A\cdot r_C) \mod p=10 + 14 \cdot 2 \mod 31= 7$\\
+$K_{BC}=(a_B+b_B\cdot r_C) \mod p=17 + 6 \cdot 2 \mod 31 = 29$\\
+
+\problem 3
+Background: Alice and Bob use Diffie-Hellman to agree on a key. They chose $p$, $a$ prime, and $\alpha$, a primitive element of $\Z^*_p$. Alice sends $x_1 =\alpha^a (\mod p)$to Bob. Bob sends $x_2 =\alpha^b (\mod p)$to Alice.The agreed upon key is then $\alpha^{a\cdot b} (\mod p)$. Eve learns $x2$ and $b$ and it turns out that $gcd(b, p - 1) = 1$.\\
+Your Task: Explain how Eve can compute $\alpha$ from the information she has.\\
+$\because \alpha$ is a primitive element of $\Z^*_p$\\
+$\therefore \alpha^{p-1} \cong 1 \mod p$ and $\alpha < p$\\
+$\because gcd(b, p - 1) = 1$\\
+$\therefore $ we can have $x$, $y$ such that $xb+y(p-1)=1$ by xgcd.\\
+$\because x_2 =\alpha^b (\mod p)$\\
+$\therefore \alpha^b \cong x_2 \mod p$\\
+$\therefore \alpha \cong \alpha^1 \cong \alpha^{xb+y(p-1)} \cong \alpha^{xb} \cdot \alpha^{y(p-1)} \cong x_2^x \cdot 1^y \cong x_2^x \mod p$ \\
+$\because \alpha < p$\\
+$\therefore \alpha = x_2^x \mod p$
+
+\problem 4 
+The ElGamal Signature Scheme has a number of variations where one changes the definition of s and the verification test.
+
+\begin{enumerate}
+\item If we take $s = ( a^{-1} \cdot (m-kr)) \mod (p-1)$, show that
+$ver(m, r, s) = [\alpha^m \cong (\alpha^a)^s \cdot r^r (\mod p)]$ is a valid verification test.\\
+\claim $\alpha^m \cong (\alpha^a)^s \cdot r^r (\mod p)$ when $s = ( a^{-1} \cdot (m-kr)) \mod (p-1)$
+\begin{proof}
+\pnl
+$\because s = ( a^{-1} \cdot (m-kr)) \mod (p-1)$ \\
+$\therefore (\alpha^a)^s \cdot r^r \cong \alpha^{a\cdot a^{-1} \cdot (m-kr)} \cdot r^r \cong \alpha^{m-kr} \cdot  r^r (\mod p)$\\
+$\because r = \alpha^k \mod p$ \\
+$\therefore \alpha^{m-kr} \cdot  r^r \cong \alpha^{m-kr} \cdot \alpha^kr \cong \alpha^{m-kr+kr} \cong \alpha^m (\mod p)$\\
+$\therefore \alpha^m \cong (\alpha^a)^s \cdot r^r (\mod p)$ when $s = ( a^{-1} \cdot (m-kr)) \mod (p-1)$
+
+\end{proof}
+
+\item If we take $s = ( a\cdot m + k\cdot r) \mod (p-1)$, show that
+$ver(m, r, s) = [\alpha^s \cong (\alpha^a)^m \cdot r^r (\mod p)]$ is a valid verification test.\\
+\claim $\alpha^s \cong (\alpha^a)^m \cdot r^r (\mod p)$ when $s = ( a\cdot m + k\cdot r) \mod (p-1)$\\
+\begin{proof}
+\pnl
+$\because r = \alpha^k \mod p$ \\
+$\therefore (\alpha^a)^m \cdot r^r \cong \alpha^{a\cdot m} \cdot \alpha^{k\cdot r} \cong \alpha^{a\cdot m + k\cdot r} (\mod p) $\\
+$\because s = ( a\cdot m + k\cdot r) \mod (p-1)$ \\
+$\therefore \alpha^s \cong \alpha^{a\cdot m + k\cdot r} (\mod p)$\\
+$\therefore \alpha^s \cong (\alpha^a)^m \cdot r^r (\mod p)$ when $s = ( a\cdot m + k\cdot r) \mod (p-1)$
+\end{proof}
+
+\item If we take $s = ( a\cdot r + k\cdot m) \mod (p-1)$, show that
+$ver(m, r, s) = [\alpha^s \cong (\alpha^a)^r \cdot r^m (\mod p)]$ is a valid verification test.\\
+\claim $\alpha^s \cong (\alpha^a)^r \cdot r^m (\mod p)$ when $s = ( a\cdot r + k\cdot m) \mod (p-1)$\\
+\begin{proof}
+\pnl
+$\because s = ( a\cdot r + k\cdot m) \mod (p-1)$ \\
+$\therefore \alpha^s \cong \alpha^{a\cdot r + k\cdot m} \mod p$\\
+$\because r = \alpha^k \mod p$ \\
+$\therefore (\alpha^a)^r \cdot r^m \cong \alpha^{a\cdot r} \cdot \alpha^{k\cdot m} \cong \alpha^{a\cdot r + k\cdot m} (\mod p)$\\
+$\therefore \alpha^s \cong (\alpha^a)^r \cdot r^m (\mod p)$ when $s = ( a\cdot r + k\cdot m) \mod (p-1)$
+\end{proof}
+\end{enumerate}
+
+\problem 5 
+Suppose that $g$ is a primitive element of $\Z^*_n$ and $k \in \Z_{\varphi(n)}$.
+
+\begin{enumerate}
+\item Show that $g^k \mod n$ is a primitive element of $\Z^*_n$ if and only if $gcd(k, \varphi(n)) = 1$.
+\begin{proof}
+\pnl
+Show $g^k \mod n \in \Z^*_n \implies gcd(k, \varphi(n)) = 1$\\\\
+$\because g \in \Z^*_n$ and $g^k \mod n \in \Z^*_n$.\\
+$\therefore g^{\varphi(n)} \cong g^{k\cdot \varphi(n)}  \cong  1 (\mod n)$\\
+$\therefore \{g^1, g^2, \cdots, g^{\varphi(n)}\} = \{g^k, g^2k, \cdots, g^{\varphi(n)k}\} = \Z^*_n$\\
+Suppose $gcd(k, \varphi(n)) = d$, $d \neq 1$, $k=qd$, $\varphi(n)=pd$, $p>q$ for contradiction.\\
+$\therefore \{g^1, g^2, \cdots, g^{p}, \cdots, \cdots, g^{pd}\} = \{g^k, g^{2k}, \cdots, g^{\varphi(n)k}\}$\\
+$ = \{g^{qd}, g^{2qd}, \cdots, g^{pqd}, \cdots, g^{pdqd}\}$\\
+$\therefore g^{pqd} \not \cong g^{pdqd} (\mod n)$\\
+$\because g^{p} \in \Z^*_n$\\
+$\therefore (g^{p})^{\varphi(n)} \cong 1 (\mod n)$\\
+$\therefore (g^{pqd}) \cong g^{k\cdot \varphi(n)} \cong 1 (\mod n)$\\
+$\therefore g^{pqd} \cong g^{pdqd} \cong 1 (\mod n)$\\
+Contradiction.\\
+$\therefore gcd(k, \varphi(n)) = 1$
+
+Show $gcd(k, \varphi(n)) = 1 \implies g^k \mod n \in \Z^*_n$\\\\
+$\because g$ is a primitive element of $\Z^*_n$.\\
+$\therefore \{g^1, g^2, \cdots, g^{\varphi(n)}\} = \Z^*_n$\\
+$\because gcd(k, \varphi(n)) = 1$.\\
+Suppose $g^k$ is not a primitive element of $\Z^*_n$ for contradiction.\\
+Construct $S = \{g^k, g^{2k}, \cdots, g^{\varphi(n)k}\}$\\
+$\therefore S$ have duplicated element $g^{pk} \cong g^{qk} (\mod n)$, $p<q<\varphi(n)$\\
+$\because gcd(k, \varphi(n)) = 1$\\
+$\therefore g^{p} \cong g^{q} (\mod n)$ by cancellation law.\\
+$\because p<q<\varphi(n)$ and $g$ is a primitive element of $\Z^*_n$.\\
+$\therefore g^{p} \not \cong g^{q} (\mod n)$\\
+$\therefore g^{pk} \not \cong g^{qk} (\mod n)$\\
+Contradiction.\\
+$\therefore g^k$ is a primitive element of $\Z^*_n$
+\end{proof}
+\item Show that $\Z^*_n$ has exactly $\varphi(\varphi(n))$ primitive elements.\\
+
+\begin{proof}
+\pnl
+$\because g^k$ is a primitive element of $\Z^*_n \iff gcd(k, \varphi(n)) = 1$ when $g$ is a primitive element.\\
+$\therefore k$ that satisfy the $gcd(k, \varphi(n)) = 1$ are $\Z^*_{\varphi(n)}$ by defination\\
+$\therefore$ number of $k$ is $||\Z^*_{\varphi(n)}||$\\
+$\because ||\Z^*_{\varphi(n)}|| = \varphi(\varphi(n))$\\
+$\therefore$ number of $k$ is exactly $\varphi(\varphi(n))$\\
+\end{proof}
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
